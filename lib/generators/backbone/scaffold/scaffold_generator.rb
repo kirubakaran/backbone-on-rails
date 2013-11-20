@@ -10,10 +10,10 @@ module Backbone
       desc "Generates a Backbone.js resource scaffold"
 
       class_option :javascript,
-                    type: :boolean,
-                    aliases: "-j",
-                    default: false,
-                    desc: "Generate JavaScript"
+                    :type => :boolean,
+                    :aliases => "-j",
+                    :default => false,
+                    :desc => "Generate JavaScript"
 
       def parse_options
         js = options.javascript
