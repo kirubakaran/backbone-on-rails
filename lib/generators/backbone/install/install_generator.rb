@@ -10,16 +10,16 @@ module Backbone
       desc "Generates a Backbone.js skeleton directory structure and manifest"
 
       class_option :javascript,
-                    type: :boolean,
-                    aliases: "-j",
-                    default: false,
-                    desc: "Generate JavaScript"
+                    :type => :boolean,
+                    :aliases => "-:j",
+                    :default => false,
+                    :desc => "Generate JavaScript"
 
       class_option :manifest,
-                    type: :string,
-                    aliases: "-m",
-                    default: "application.js",
-                    desc: "Javascript manifest file to modify (or create)"
+                    :type => :string,
+                    :aliases => "-m",
+                    :default => "application.js",
+                    :desc => "Javascript manifest file to modify (or create)"
 
       def create_dir_layout
         empty_directory model_path
@@ -49,7 +49,7 @@ module Backbone
         in_root do
           create_file(manifest) unless File.exists?(manifest)
           if File.open(manifest).read().include?('//= require_tree')
-            inject_into_file(manifest, out, before: '//= require_tree')
+            inject_into_file(manifest, out, :before => '//= require_tree')
           else
             append_file(manifest, out)
           end
